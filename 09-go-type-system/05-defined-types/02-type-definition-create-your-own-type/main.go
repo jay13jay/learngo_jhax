@@ -16,16 +16,20 @@ import (
 //
 // EXERCISE: Move the declaration into main()'s scope
 //
-type (
-	gram  float64 // float64 is the underlying type of gram
-	ounce float64 // float64 is the underlying type of ounce
-)
+// type (
+// 	gram  float64 // float64 is the underlying type of gram
+// 	ounce float64 // float64 is the underlying type of ounce
+// )
 
 // above code is the same as the following:
 // type gram  float64
 // type ounce float64
 
 func main() {
+	type (
+		gram  float64 // float64 is the underlying type of gram
+		ounce float64 // float64 is the underlying type of ounce
+	)
 	// type definitions are also allowed in blocks
 
 	// underlying types are the same
