@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Vowel or Consonant
 //
@@ -47,4 +53,19 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+
+	if len(os.Args) != 2 || len(os.Args[1]) != 1 {
+		fmt.Println("Give me a letter")
+		os.Exit(0)
+	}
+	let := os.Args[1]
+	if strings.IndexAny(let, "aeiou") >= 0 {
+		fmt.Printf("%q is a vowel\n", let)
+	} else if strings.IndexAny(let, "yw") >= 0 {
+		fmt.Printf("%q is sometimes a vowel, sometimes not\n", let)
+	} else {
+		// in reality this can catch far more than consonants. you could use index any and pass in the rest of the alphabet
+		// but that would be really ugly and beyond scope
+		fmt.Printf("%q is a consonant\n", let)
+	}
 }

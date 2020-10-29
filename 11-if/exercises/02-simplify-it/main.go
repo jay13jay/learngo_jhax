@@ -8,7 +8,9 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // ---------------------------------------------------------
 // EXERCISE: Simplify It
@@ -33,19 +35,14 @@ func main() {
 
 	var big bool
 
-	if radius >= 50 {
-		if radius >= 100 {
-			if radius >= 200 {
-				big = true
-			}
-		}
+	if radius >= 200 {
+		big = true
 	}
 
-	if big != true {
-		fmt.Println("I don't know.")
-	} else if !(isSphere == false) {
+	if big && isSphere {
 		fmt.Println("It's a big sphere.")
 	} else {
 		fmt.Println("I don't know.")
 	}
+
 }
