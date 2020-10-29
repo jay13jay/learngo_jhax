@@ -60,21 +60,29 @@ func main() {
 	// Try running the program with a value of -128 to 127
 	// Running it beyond that range will result in
 	// either -128 or 127.
-	fmt.Println("int8 value is:", int8(val))
+	fmt.Printf("int8 value is :\t%d\n", int8(val))
 
 	// --------------------------------------
 	// NOW IT'S YOUR TURN!
 	// --------------------------------------
 
 	// 1. Get an int16 value using ParseInt and convert it and print it
+	val, _ = strconv.ParseInt(os.Args[2], 10, 16)
+	fmt.Printf("int16 value is:\t%d\n", int16(val))
 
 	// 2. Get an int32 value using ParseInt and convert it and print it
+	val, _ = strconv.ParseInt(os.Args[3], 10, 32)
+	fmt.Printf("int32 value is:\t%d\n", int(val))
 
 	// 3. Get an int64 value using ParseInt and convert it and print it
+	val, _ = strconv.ParseInt(os.Args[3], 10, 64)
+	fmt.Printf("int64 value is:\t%d\n", int64(val))
 
 	// 4. Get an int8 value using ParseInt and convert it and print it
 	//    But this time, get the value in bits.
 	//
 	//    For example : 00000100
 	//    Should print: 4
+	val, _ = strconv.ParseInt(os.Args[5], 2, 8)
+	fmt.Printf("byte value is:\t%d\n", int(val))
 }
