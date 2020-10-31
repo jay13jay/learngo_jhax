@@ -39,6 +39,7 @@ Usage:
 feet [feetsToConvert]`
 
 func main() {
+	const feetToMeters float64 = 0.3048
 	if len(os.Args) < 2 {
 		fmt.Println(strings.TrimSpace(usage))
 		return
@@ -46,8 +47,13 @@ func main() {
 
 	arg := os.Args[1]
 
-	feet, _ := strconv.ParseFloat(arg, 64)
-	meters := feet * 0.3048
+	feet, err := strconv.ParseFloat(arg, 64)
+	if err != nil {
+		fmt.Printf("%s is not a number...\n", arg)
+		return
+	}
+
+	meters := feet * feetToMeters
 
 	fmt.Printf("%g feet is %g meters.\n", feet, meters)
 }

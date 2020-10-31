@@ -49,11 +49,13 @@ const (
 	errUser  = "Access denied for %q.\n"
 	errPwd   = "Invalid password for %q.\n"
 	accessOK = "Access granted to %q.\n"
-	user     = "jack"
-	pass     = "1888"
 )
 
 func main() {
+	us := make([]string, 2)
+	ps := make([]string, 2)
+	us[0] = "jack"
+	us[1] = "inanc"
 	args := os.Args
 
 	if len(args) != 3 {
@@ -63,7 +65,7 @@ func main() {
 
 	u, p := args[1], args[2]
 
-	if u != user {
+	if u != us[0] || u != us[1] {
 		fmt.Printf(errUser, u)
 	} else if p != pass {
 		fmt.Printf(errPwd, u)
