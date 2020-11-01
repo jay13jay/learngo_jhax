@@ -64,13 +64,15 @@ func main() {
 	cmd := strings.ToLower(os.Args[1])
 	str := os.Args[2]
 
-	switch {
-	case cmd == "lower":
+	switch cmd {
+	case "lower":
 		fmt.Println(strings.ToLower(str))
-	case cmd == "upper":
+	case "upper":
 		fmt.Println(strings.ToUpper(str))
-	case cmd == "title":
-		fmt.Println(strings.Title(str))
+	case "title":
+		// ToLower is called in the case you pass in a string with capitals in the middle
+		// which strings.Title doesn't account for
+		fmt.Println(strings.Title(strings.ToLower(str)))
 	default:
 		fmt.Printf(errCmd, cmd)
 	}
