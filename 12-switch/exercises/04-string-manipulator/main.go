@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // STORY
 //  You want to write a program that will manipulate a
@@ -43,6 +49,30 @@ package main
 //    Unknown command: "genius"
 // ---------------------------------------------------------
 
+const (
+	usage     = "\nUsage:\ngo run main.go [command] [string]\n"
+	errCmd    = "Unknown command: %s\n"
+	errString = "Please enter a string to convert"
+)
+
 func main() {
+	if len(os.Args) != 3 {
+		fmt.Println(usage)
+		return
+	}
+
+	cmd := strings.ToLower(os.Args[1])
+	str := os.Args[2]
+
+	switch {
+	case cmd == "lower":
+		fmt.Println(strings.ToLower(str))
+	case cmd == "upper":
+		fmt.Println(strings.ToUpper(str))
+	case cmd == "title":
+		fmt.Println(strings.Title(str))
+	default:
+		fmt.Printf(errCmd, cmd)
+	}
 
 }
