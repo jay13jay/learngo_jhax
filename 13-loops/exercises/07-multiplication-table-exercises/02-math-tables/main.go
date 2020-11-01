@@ -115,7 +115,7 @@ const (
 	errArgs    = "Usage: [op=*/+-] [size]"
 	errSizeMis = "Size is missing"
 	errSize    = "Wrong size"
-	validOp    = "*/+-%"
+	validOp    = "*/+-%\\"
 	errOp      = "Invalid Operator\nValid ops one of: %s"
 )
 
@@ -152,29 +152,27 @@ func main() {
 		fmt.Printf("%5d", i)
 
 		// print the cells
+		var ret int
 		for j := 0; j <= size; j++ {
 			switch op {
 			case "*":
-				fmt.Printf("%5d", i*j)
+				ret = i * j
 			case "/":
 				// check for divide by 0 errors, print 0 if true
-				if i == 0 || j == 0 {
-					fmt.Printf("    0")
-				} else {
-					fmt.Printf("%5d", i/j)
+				if j != 0 {
+					ret = i / j
 				}
 			case "+":
-				fmt.Printf("%5d", i+j)
+				ret = i + j
 			case "-":
-				fmt.Printf("%5d", i-j)
+				ret = i - j
 			case "%":
 				// check for divide by 0 errors, print 0 if true
-				if i == 0 || j == 0 {
-					fmt.Printf("    0")
-				} else {
-					fmt.Printf("%5d", i%j)
+				if j != 0 {
+					ret = i % j
 				}
 			}
+			fmt.Printf("%5d", ret)
 
 		}
 		fmt.Println()
