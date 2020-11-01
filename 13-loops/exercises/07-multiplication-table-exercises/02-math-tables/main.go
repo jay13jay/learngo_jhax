@@ -112,15 +112,18 @@ import (
 // ---------------------------------------------------------
 
 const (
-	errArgs = "Usage: [op=*/+-] [size]"
-	errSize = "Size is missing"
+	errArgs    = "Usage: [op=*/+-] [size]"
+	errSizeMis = "Size is missing"
+	errSize    = "Wrong size"
+	validOp    = "*/+-%"
+	errOp      = "Invalid Operator\nValid ops one of: %s"
 )
 
 func main() {
 
 	if len(os.Args) != 3 {
 		if len(os.Args) == 2 {
-			fmt.Println(errSize)
+			fmt.Println(errSizeMis)
 		}
 		fmt.Println(errArgs)
 		return
@@ -129,12 +132,12 @@ func main() {
 	op := os.Args[1]                      // set operation to perform
 
 	if err != nil || size < 1 {
-		fmt.Println("Wrong size")
+		fmt.Println(errSize)
 		return
 	}
-	if strings.IndexAny(op, "*/+-%") == -1 {
-		fmt.Println("Invalid operator.")
-		fmt.Println("Valid ops one of: */+-%")
+	if strings.IndexAny(op, validOp) == -1 {
+		fmt.Println(errOp, validOp)
+		return
 	}
 
 	// print the header
