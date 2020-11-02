@@ -32,8 +32,11 @@ import (
 func main() {
 	var sum int
 	for i := 1; i <= 10; i++ {
-		fmt.Printf(" + %d ", i)
+		fmt.Printf(" %d ", i)
 		sum += i
+		if i != 10 {
+			fmt.Print("+")
+		}
 	}
-	fmt.Printf(" = %d\n", sum)
+	fmt.Printf("= %d\n", sum)
 }
