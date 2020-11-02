@@ -8,6 +8,8 @@
 
 package main
 
+import "fmt"
+
 // ---------------------------------------------------------
 // EXERCISE: Sum up to N
 //
@@ -34,6 +36,25 @@ package main
 //
 //    1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
 // ---------------------------------------------------------
+var (
+	min int
+	max int
+)
+
+const (
+	errUsage = "usage:\n go run main.go [minValue] [maxValue]"
+	errArgs  = "Please provide 2 arguments, smaller value first"
+)
 
 func main() {
+
+	var sum int
+	for i := 1; i <= 10; i++ {
+		fmt.Printf(" %d ", i)
+		sum += i
+		if i != 10 {
+			fmt.Print("+")
+		}
+	}
+	fmt.Printf("= %d\n", sum)
 }
