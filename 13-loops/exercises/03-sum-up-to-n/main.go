@@ -8,7 +8,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
 
 // ---------------------------------------------------------
 // EXERCISE: Sum up to N
@@ -44,15 +48,31 @@ var (
 const (
 	errUsage = "usage:\n go run main.go [minValue] [maxValue]"
 	errArgs  = "Please provide 2 arguments, smaller value first"
+	errValue = ""
 )
 
 func main() {
+	if len(os.Args) != 3 {
+		if len(os.Args) == 2 {
+			fmt.Println(errArgs)
+		}
+		fmt.Println(errUsage)
+		return
+	}
 
 	var sum int
-	for i := 1; i <= 10; i++ {
+	min, err1 := strconv.Atoi(os.Args[1])
+
+	max, err2 := strconv.Atoi(os.Args[2])
+	if err1 != nil || err2 != nil || min > max {
+		fmt.Printf("%s\n%s\n", errArgs, errUsage)
+		return
+	}
+
+	for i := min; i <= max; i++ {
 		fmt.Printf(" %d ", i)
 		sum += i
-		if i != 10 {
+		if i != max {
 			fmt.Print("+")
 		}
 	}
